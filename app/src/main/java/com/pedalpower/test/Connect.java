@@ -93,7 +93,8 @@ public class Connect extends Activity {
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             super.onCharacteristicChanged(gatt, characteristic);
             float f1 = ByteBuffer.wrap(characteristic.getValue()).order(ByteOrder.LITTLE_ENDIAN).getFloat();
-            power.setText(Float.toString(f1));
+//            power.setText(Float.toString(f1));
+            setPower(Float.toString(f1));
         }
     };
 
@@ -123,6 +124,15 @@ public class Connect extends Activity {
             @Override
             public void run() {
                 messages.setText(text);
+            }
+        });
+    }
+
+    private void setPower(final CharSequence text) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                power.setText(text);
             }
         });
     }
