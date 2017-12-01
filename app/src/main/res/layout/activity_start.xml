@@ -28,5 +28,15 @@
         android:layout_marginBottom="25dp"
         android:gravity="center" />
 
+    <Button
+        android:id="@+id/scale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/messages"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="86dp"
+        android:onClick="tare"
+        android:text="scale" />
+
 
 </android.widget.RelativeLayout>

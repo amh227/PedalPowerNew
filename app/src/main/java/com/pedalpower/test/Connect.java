@@ -10,10 +10,12 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -215,6 +217,21 @@ public class Connect extends Activity {
             gatt = null;
             tx = null;
             rx = null;
+        }
+    }
+
+    // tare the scale
+    public void tare(View v) {
+        if(tx == null) {
+            writeLine("tx null");
+            return;
+        } else {
+            tx.setValue("t".getBytes(Charset.forName("UTF-8")));
+            if(gatt.writeCharacteristic(tx)) {
+                writeLine("tare succeeded");
+            } else {
+                writeLine("tare failed");
+            }
         }
     }
 }
