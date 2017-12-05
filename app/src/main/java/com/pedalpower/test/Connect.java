@@ -94,7 +94,8 @@ public class Connect extends Activity {
             super.onCharacteristicChanged(gatt, characteristic);
             float f1 = ByteBuffer.wrap(characteristic.getValue()).order(ByteOrder.LITTLE_ENDIAN).getFloat();
 //            power.setText(Float.toString(f1));
-            setPower(Float.toString(f1));
+            if(f1 < 0.001)
+            setPower(String.format("%.02f", f1));
         }
     };
 
